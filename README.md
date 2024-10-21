@@ -22,12 +22,12 @@ Install the package:
 # Example Usage
 
 ```js
-import MindState from "react-native-mindstate";
+import RNMindState from "react-native-mindstate";
 
 // Check availability
 const checkAvailability = async () => {
   try {
-    const isAvailable = await MindState.isAvailable();
+    const isAvailable = await RNMindState.isAvailable();
     console.log("Mind State tracking available:", isAvailable);
   } catch (error) {
     console.error("Error checking availability:", error);
@@ -37,32 +37,36 @@ const checkAvailability = async () => {
 // Request authorization
 const requestAuth = async () => {
   try {
-    const authorized = await MindState.requestAuthorization();
+    const authorized = await RNMindState.requestAuthorization();
     console.log("Authorization granted:", authorized);
   } catch (error) {
     console.error("Error requesting authorization:", error);
   }
 };
 
-// Query mind states
-const queryStates = async () => {
-  try {
-    const endDate = new Date();
-    const startDate = new Date();
-    startDate.setDate(startDate.getDate() - 7); // Last 7 days
+// State of mind
+const stateOfMind = await RNMindState.queryMindStates({
+  startDate: moment().subtract(1, "month").toISOString(),
+  endDate: new Date().toISOString(),
+});
 
-    const mindStates = await MindState.queryMindStates({
-      startDate,
-      endDate,
-      mood: "great", // Optional mood filter
-      limit: 10, // Optional limit
-    });
+// Depression risk
+const queryPhq9Data = await RNMindState.queryPhq9Data({
+  startDate: moment().subtract(1, "month").toISOString(),
+  endDate: new Date().toISOString(),
+});
 
-    console.log("Mind states:", mindStates);
-  } catch (error) {
-    console.error("Error querying mind states:", error);
-  }
-};
+// Anxiety risk
+const queryGad7Data = await RNMindState.queryGad7Data({
+  startDate: moment().subtract(1, "month").toISOString(),
+  endDate: new Date().toISOString(),
+});
+
+// Time in daylight
+const queryTimeInDaylight = await RNMindState.queryTimeInDaylight({
+  startDate: moment().subtract(1, "month").toISOString(),
+  endDate: new Date().toISOString(),
+});
 ```
 
 # If you encounter build issues

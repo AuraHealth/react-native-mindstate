@@ -66,17 +66,58 @@ class MindState {
     return RNMindState.queryMindStates(params);
   }
 
-  /**
-   * Get the latest recorded mind state
-   * @returns {Promise<Object>} Promise resolving to the latest mind state entry
-   */
-  async getLatestMindState() {
+  async queryGad7Data(options = {}) {
     if (Platform.OS !== "ios") throw new Error(ERRORS.PLATFORM);
+
+    if (!options.startDate || !options.endDate) {
+      throw new Error(ERRORS.INVALID_PARAMS);
+    }
 
     const isAvailable = await this.isAvailable();
     if (!isAvailable) throw new Error(ERRORS.UNAVAILABLE);
 
-    return RNMindState.getLatestMindState();
+    const params = {
+      startDate: options.startDate,
+      endDate: options.endDate,
+    };
+
+    return RNMindState.queryGad7Data(params);
+  }
+
+  async queryPhq9Data(options = {}) {
+    if (Platform.OS !== "ios") throw new Error(ERRORS.PLATFORM);
+
+    if (!options.startDate || !options.endDate) {
+      throw new Error(ERRORS.INVALID_PARAMS);
+    }
+
+    const isAvailable = await this.isAvailable();
+    if (!isAvailable) throw new Error(ERRORS.UNAVAILABLE);
+
+    const params = {
+      startDate: options.startDate,
+      endDate: options.endDate,
+    };
+
+    return RNMindState.queryPhQ7Data(params);
+  }
+
+  async queryTimeInDaylight(options = {}) {
+    if (Platform.OS !== "ios") throw new Error(ERRORS.PLATFORM);
+
+    if (!options.startDate || !options.endDate) {
+      throw new Error(ERRORS.INVALID_PARAMS);
+    }
+
+    const isAvailable = await this.isAvailable();
+    if (!isAvailable) throw new Error(ERRORS.UNAVAILABLE);
+
+    const params = {
+      startDate: options.startDate,
+      endDate: options.endDate,
+    };
+
+    return RNMindState.queryTimeInDaylight(params);
   }
 }
 
