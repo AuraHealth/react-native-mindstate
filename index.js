@@ -59,10 +59,8 @@ class MindState {
     if (!isAvailable) throw new Error(ERRORS.UNAVAILABLE);
 
     const params = {
-      startDate: options.startDate.toISOString(),
-      endDate: options.endDate.toISOString(),
-      mood: options.mood,
-      limit: options.limit,
+      startDate: options.startDate,
+      endDate: options.endDate,
     };
 
     return RNMindState.queryMindStates(params);
