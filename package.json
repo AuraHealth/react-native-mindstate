@@ -1,0 +1,28 @@
+{
+    "name": "react-native-mindstate",
+    "version": "1.0.0",
+    "description": "React Native package for accessing HealthKit State of Mind data",
+    "main": "index.js",
+    "scripts": {
+      "test": "jest"
+    },
+    "keywords": [
+      "react-native",
+      "healthkit",
+      "ios",
+      "state-of-mind",
+      "mental-health"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "peerDependencies": {
+      "react": "*",
+      "react-native": ">=0.74.5"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.15.0",
+      "@babel/runtime": "^7.15.0",
+      "jest": "^27.0.6",
+      "metro-react-native-babel-preset": "^0.66.2"
+    }
+  }
